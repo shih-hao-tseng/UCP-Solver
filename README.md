@@ -2,7 +2,7 @@
 
 The repository provides the source codes of UCP solver provided in the paper
 
-S.-H. Tseng, "A Generic Solver for Unconstrained Control Problems." 
+S.-H. Tseng, "A Generic Solver for Unconstrained Control Problems with Integral Functional Objectives." 
 
 ## Requirements
 Two versions of the solver are included: the single threaded version and the parallelized version. For compilation, the single threaded version requires g++ compiler and c++ standard libraries; The parallelized version requires NVIDIA CUDA compiler and libraries. GNU Make is necessary for compilation automation.
