@@ -11,6 +11,10 @@ int main () {
 	cout.precision(17);
 
     Witsenhausen prob;
+    // set the parameter of the problems below
+    // prob.set_k (0.2);
+    // prob.set_sigma_x (5.0);
+    // prob.set_sigma_w (1.0);
     prob.set_error_bound      (1e-10);
     prob.set_total_iterations (20);
     prob.set_total_samples    (TOTAL_SAMPLES);
