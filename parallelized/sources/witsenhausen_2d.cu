@@ -327,7 +327,7 @@ Witsenhausen2D::initialize_variables (void) {
     );
     cudaDeviceSynchronize ();
     
-    // The operations below force the value to sustain, otherwise, the value can go wrong (wierd)
+    // The operations below force the value to sustain, otherwise, the value can go wrong (weird)
     test_normalization_x();
     test_normalization_w();
 
