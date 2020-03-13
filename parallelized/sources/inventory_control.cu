@@ -17,6 +17,16 @@
 #include "inventory_control.cuh"
 #include <math.h>
 
+__global__
+void
+parallel_get_J_value (InventoryControl* base) {
+    int sample_x = blockIdx.x*blockDim.x + threadIdx.x;
+    if(sample_x >= base->_total_samples)  return;
+    double x_0 = -1.0 + base->_sample_coord_step_size/2 + sample_x * base->_sample_coord_step_size;
+
+    base->_comp_x_cost[sample_x] = get_J_m_value (base, 0, x_0);
+}
+
 double
 InventoryControl::get_J_value (void) {
     if (_sample_coord == nullptr)  return 0.0;
@@ -32,16 +42,6 @@ InventoryControl::get_J_value (void) {
     }
     retval *= _unif_w_prob_dw;
     return retval;
-}
-
-__global__
-void
-parallel_get_J_value (InventoryControl* base) {
-    int sample_x = blockIdx.x*blockDim.x + threadIdx.x;
-    if(sample_x >= base->_total_samples)  return;
-    double x_0 = -1.0 + base->_sample_coord_step_size/2 + sample_x * base->_sample_coord_step_size;
-
-    base->_comp_x_cost[sample_x] = get_J_m_value (base, 0, x_0);
 }
 
 void
